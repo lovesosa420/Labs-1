@@ -7,12 +7,17 @@ namespace Lab2
         void Print();
     }
 
-    public abstract class Figure : IPrint
+    public abstract class Figure : IPrint, IComparable
     {
         public abstract double Area();
 
         public void Print() =>
             Console.WriteLine(ToString());
+        int IComparable.CompareTo(object obj)
+        {
+            var figure = obj as Figure;
+            return Math.Sign(Area() - figure.Area());
+        }
     }
 
     public class Rectangle : Figure
@@ -26,8 +31,8 @@ namespace Lab2
         public override double Area() =>
             Height * Width;
 
-        public override string ToString() => 
-            $"Прямоугольник:\nШирина: {Width}; Высота: {Height}; Площадь: {Area()}";
+        public override string ToString() =>
+            $"Прямоугольник: Ширина: {Width}; Высота: {Height}; Площадь: {Area()}";
     }
 
     public class Square : Rectangle
@@ -35,7 +40,7 @@ namespace Lab2
         public Square(double a) : base(a, a) { }
 
         public override string ToString() =>
-            $"Квадрат:\nДлина стороны: {Width}; Площадь: {Area()}";
+            $"Квадрат: Длина стороны: {Width}; Площадь: {Area()}";
     }
 
     public class Circle : Figure
@@ -49,7 +54,7 @@ namespace Lab2
             Math.PI * Radius * Radius;
 
         public override string ToString() =>
-            $"Круг:\nРадиус: {Radius}; Площадь: {Area()}";
+            $"Круг: Радиус: {Radius}; Площадь: {Area()}";
 
         public static class Program
         {
