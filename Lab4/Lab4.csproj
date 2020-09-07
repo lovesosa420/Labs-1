@@ -6,4 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Lab5\Lab5.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -52,6 +52,17 @@ namespace Lab4
 
         private void SearchForWord(object sender, EventArgs e)
         {
+            int maxDist;
+            try
+            {
+                maxDist = Convert.ToInt32(_distTextBox.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Неправильный формат ввода максимальной дистанции", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             _listBox.BeginUpdate();
             _listBox.Items.Clear();
 
@@ -60,7 +71,11 @@ namespace Lab4
             foreach (var word in _words)
             {
                 if (word.Contains(_textBox.Text))
-                    _listBox.Items.Add(word);
+                {
+                    var dist = Lab5.Methods.LevenshteinDistance(word, _textBox.Text);
+                    if (dist <= maxDist)
+                        _listBox.Items.Add(new ListViewItem(new string[] { word, dist.ToString() }));
+                }
             }
 
             _stopwatch.Stop();
