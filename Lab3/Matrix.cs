@@ -25,7 +25,7 @@ namespace SparseMatrix
         /// <summary>
         /// Пустой элемент, который возвращается если элемент с нужными координатами не был задан
         /// </summary>
-        private readonly T nullElement;
+        private readonly T _nullElement;
 
         /// <summary>
         /// Конструктор
@@ -35,7 +35,7 @@ namespace SparseMatrix
             _maxX = px;
             _maxY = py;
             _maxZ = pz;
-            nullElement = nullElementParam;
+            _nullElement = nullElementParam;
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace SparseMatrix
                 }
                 else
                 {
-                    return nullElement;
+                    return _nullElement;
                 }
             }
             set
