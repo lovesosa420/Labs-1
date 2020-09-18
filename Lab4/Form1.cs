@@ -29,9 +29,9 @@ namespace Lab4
                 _stopwatch.Start();
 
                 var text = File.ReadAllText(_openFileDialog.FileName);
-                foreach (var word in text.Split(new char[] { ' ', '\n' }))
+                foreach (var word in text.Split(" \n\t,./\\[]{}<>@#$%^&*();'\"|?!".ToCharArray()))
                 {
-                    if (!_words.Contains(word))
+                    if (!_words.Contains(word) && word != "")
                         _words.Add(word);
                 }
 
