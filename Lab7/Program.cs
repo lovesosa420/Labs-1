@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Lab7
+namespace HMW
 {
     public class Employee
     {

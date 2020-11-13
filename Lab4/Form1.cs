@@ -37,7 +37,7 @@ namespace Lab4
 
                 _stopwatch.Stop();
 
-                _label.Text = $"Время загрузки текста:\n{_stopwatch.ElapsedMilliseconds}ms";
+                _label.Text = $"Время загрузки текста:\n{_stopwatch.Elapsed}ms";
                 _label.Visible = true;
                 SetLableLocation();
 
